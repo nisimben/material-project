@@ -1,0 +1,38 @@
+<div>
+    <div class="wrapper">
+
+        <button mat-button [matMenuTriggerFor]="aboveMenu">Above</button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+            <button routerLink="/c1" mat-menu-item>Badge Material</button>
+            <button routerLink="" mat-menu-item>home</button>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+            <button routerLink="/c3" mat-menu-item>Date picker</button>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <button routerLink="/inputName" mat-menu-item>Input Name </button>
+        </mat-menu>
+        <mat-form-field>
+
+            <input [(ngModel)]="searchText" placeholder="search text goes here" matInput type="text" autofocus>
+            <button mat-button matPrefix mat-icon-button>
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+</div>
+<ul>
+    <li *ngFor="let country of countries | pipeSearch : searchText">{{country}}</li>
+</ul>
+<div *ngIf="fullRes">
+
+    <h1>Stars</h1>
+    <ul>
+        <li *ngFor="let s of fullRes.starsSky">{{s.StarName}} - {{s.StarWeight}}</li>
+    </ul>
+</div>
+<router-outlet></router-outlet>
