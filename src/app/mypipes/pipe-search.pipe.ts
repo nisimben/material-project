@@ -16,9 +16,8 @@ export class PipeSearchPipe implements PipeTransform {
 
   transform(items: any[], searchText: string): any[] {
     if (!items || !searchText) return [];
-    searchText = searchText.toLowerCase;
-    return items.filter(it => {
-      return it.toLowerCase().startsWith(searchText);
+    return items.filter(item => {
+      return item.toLowerCase().startsWith(searchText.toLowerCase());
     });
   }
 }
